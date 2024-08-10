@@ -8,3 +8,9 @@ k create secret generic my-service-account-secret --from-literal=token="MY-SERVI
 # User for deployment or pod:
     spec:
       serviceAccount: my-service-account
+
+ service account admission controller: 
+ - manages service account
+ - assigns default service account if custom service account isn't specified
+ - manges ImagePullSecrets, if not, use service account's secret
+ - API token for API access added/removed by token controller to var/run/secrets/kubernetes.io/serviceaccount/token
